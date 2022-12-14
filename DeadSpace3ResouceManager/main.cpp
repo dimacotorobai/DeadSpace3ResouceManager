@@ -4,17 +4,17 @@
 #include <TlHelp32.h>
 
 //Function Prototypes
-DWORD	  GetProcessId(const wchar_t* szProcessName);
+DWORD     GetProcessId(const wchar_t* szProcessName);
 uintptr_t GetModuleBaseAddress(const wchar_t* szModuleName, DWORD dwProcessId);
 uintptr_t FindDynamicAddress(HANDLE hProcess, uintptr_t uiModuleBaseAddress, const std::vector<int>& Offsets);
-void KeyUp(BYTE vk);
+void      KeyUp(BYTE vk);
 
 //Offsets
 struct DS3 {
 	std::vector<int> Tungsten_Offset      = { 0xDD3B8C, 0x8, 0xE4, 0x74, 0x8, 0x98, 0x80, 0xDF4 };
 	std::vector<int> Semiconductor_Offset = { 0xDD3B8C, 0x8, 0xE4, 0x74, 0x8, 0x98, 0x80, 0xDF8 };
-	std::vector<int> ScrapMetal_Offset	  = { 0xDD3B8C, 0x8, 0xE4, 0x74, 0x8, 0x98, 0x80, 0xDFC };
-	std::vector<int> SomaticGel_Offset	  = { 0xDD3B8C, 0x8, 0xE4, 0x74, 0x8, 0x98, 0x80, 0xE00 };
+	std::vector<int> ScrapMetal_Offset    = { 0xDD3B8C, 0x8, 0xE4, 0x74, 0x8, 0x98, 0x80, 0xDFC };
+	std::vector<int> SomaticGel_Offset    = { 0xDD3B8C, 0x8, 0xE4, 0x74, 0x8, 0x98, 0x80, 0xE00 };
 	std::vector<int> Transducer_Offset    = { 0xDD3B8C, 0x8, 0xE4, 0x74, 0x8, 0x98, 0x80, 0xE04 };
 	std::vector<int> RationSeals_Offset   = { 0xDD3B8C, 0x8, 0xE4, 0x74, 0x8, 0x98, 0x80, 0xE08 };
 };
@@ -37,20 +37,20 @@ int main(int argc, char **argv) {
 
 	//Print Process Info
 	std::cout << "Process Name: deadspace3.exe\n"
-			  << "PID: 0x" << std::hex << dwPID << '\n'
-			  << "Base Address: 0x" << uiBA << std::dec << "\n\n";
+	          << "PID: 0x" << std::hex << dwPID << '\n'
+	          << "Base Address: 0x" << uiBA << std::dec << "\n\n";
 
 	//Instantiate Dynamic struct
 	DS3 offsets;
 
 	//Main Loop
 	std::cout << "[F1] Tungsten\n"
-			  << "[F2] Semicoductor\n"
-			  << "[F3] Scrap Metal\n"
-			  << "[F4] Somatic Gel\n"
-			  << "[F5] Transducer\n"
-			  << "[F6] Ration Seals\n"
-			  << "[F7] Exit\n";
+	          << "[F2] Semicoductor\n"
+	          << "[F3] Scrap Metal\n"
+	          << "[F4] Somatic Gel\n"
+	          << "[F5] Transducer\n"
+	          << "[F6] Ration Seals\n"
+	          << "[F7] Exit\n";
 
 	for (;;) {
 		uintptr_t buffer;
