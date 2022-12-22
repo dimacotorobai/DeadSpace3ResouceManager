@@ -33,7 +33,7 @@ int main(int argc, char **argv) {
 
 	//Attach Handle to the Process
 	HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, NULL, dwPID);
-	if (hProcess == INVALID_HANDLE_VALUE) return EXIT_FAILURE;
+	if (!hProcess) return EXIT_FAILURE;
 
 	//Print Process Info
 	std::cout << "Process Name: deadspace3.exe\n"
@@ -44,12 +44,12 @@ int main(int argc, char **argv) {
 	DS3 offsets;
 
 	//Main Loop
-	std::cout << "[F1] Tungsten\n"
-	          << "[F2] Semicoductor\n"
-	          << "[F3] Scrap Metal\n"
-	          << "[F4] Somatic Gel\n"
-	          << "[F5] Transducer\n"
-	          << "[F6] Ration Seals\n"
+	std::cout << "[F1] Give 500 Tungsten\n"
+	          << "[F2] Give 500 Semicoductor\n"
+	          << "[F3] Give 500 Scrap Metal\n"
+	          << "[F4] Give 500 Somatic Gel\n"
+	          << "[F5] Give 500 Transducer\n"
+	          << "[F6] Give 500 Ration Seals\n"
 	          << "[F7] Exit\n";
 
 	for (;;) {
